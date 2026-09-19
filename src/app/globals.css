@@ -1,0 +1,161 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-charcoal-950: var(--charcoal-950);
+  --color-charcoal-800: var(--charcoal-800);
+  --color-charcoal-600: var(--charcoal-600);
+  --color-chalk-50: var(--chalk-50);
+  --color-chalk-100: var(--chalk-100);
+  --color-ink-700: var(--ink-700);
+
+  --color-lemon-500: var(--lemon-500);
+  --color-lemon-400: var(--lemon-400);
+  --color-lemon-600: var(--lemon-600);
+
+  --color-olive-600: var(--olive-600);
+  --color-olive-100: var(--olive-100);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --font-display: var(--font-space-grotesk), system-ui;
+  --font-body: var(--font-inter), system-ui;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+:root {
+  /* Hex codes from Lemon color spec */
+  --charcoal-950: #15171A;
+  --charcoal-800: #23262A;
+  --charcoal-600: #4B4F54;
+  --chalk-50: #FAFAF5;
+  --chalk-100: #F2F1E8;
+  --ink-700: #2C2E28;
+
+  --lemon-500: #c4ef17;
+  /* Requested neon lemon */
+  --lemon-400: #d4f451;
+  --lemon-600: #9cbd12;
+
+  --olive-600: #565C1F;
+  --olive-100: #E3E6CE;
+
+  /* Map standard variables to our tokens */
+  --background: var(--chalk-50);
+  --foreground: var(--ink-700);
+  --card: var(--chalk-100);
+  --card-foreground: var(--ink-700);
+  --popover: var(--chalk-50);
+  --popover-foreground: var(--ink-700);
+  --primary: var(--charcoal-950);
+  --primary-foreground: var(--chalk-50);
+  --secondary: var(--chalk-100);
+  --secondary-foreground: var(--charcoal-950);
+  --muted: var(--chalk-100);
+  --muted-foreground: var(--charcoal-600);
+  --accent: var(--lemon-500);
+  --accent-foreground: var(--charcoal-950);
+  --destructive: #EF4444;
+  --destructive-foreground: #FAFAF5;
+  --border: #D1D0C4;
+  --input: #D1D0C4;
+  --ring: var(--lemon-500);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: var(--charcoal-950);
+  --foreground: var(--chalk-50);
+  --card: var(--charcoal-800);
+  --card-foreground: var(--chalk-50);
+  --popover: var(--charcoal-800);
+  --popover-foreground: var(--chalk-50);
+  --primary: var(--chalk-50);
+  --primary-foreground: var(--charcoal-950);
+  --secondary: var(--charcoal-800);
+  --secondary-foreground: var(--chalk-50);
+  --muted: var(--charcoal-800);
+  --muted-foreground: var(--charcoal-600);
+  --border: #35393E;
+  --input: #35393E;
+  --ring: var(--lemon-500);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased selection:bg-lemon-400 selection:text-charcoal-950;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight font-bold;
+  }
+}
+
+/* Custom transitions and properties */
+.line-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+/* Smooth Scrolling defaults */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis-target {
+  scroll-behavior: clip;
+}
+
+.lenis-window {
+  overflow: anchor;
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
